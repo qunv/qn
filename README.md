@@ -139,6 +139,7 @@ import "github.com/qunv/qn"
 
 ## Roadmap
 - [X] HTTP, WS
+- [ ] Handle tags
 - [ ] Check duplicate protocol method 
 - [ ] New http method
 - [ ] Event bus handle
