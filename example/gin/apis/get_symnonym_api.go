@@ -10,7 +10,7 @@ type GetSynonymApi struct {
 }
 
 func NewGetSynonymApi() qn.Api {
-	ws := qn.WS("/ws/v1/:id").New()
+	ws := qn.WS("/ws/:id").New()
 	http := qn.HTTP_GET("/v1/:id").Tags("private", "public").New()
 	return &GetSynonymApi{
 		Regs: qn.Registers(http, ws),
@@ -23,14 +23,14 @@ func (s *GetSynonymApi) Handle(r qn.Request) qn.Response {
 	if id == "1" {
 		return qn.ErrorResponse{
 			Code:    1000,
-			Message: "error nay",
+			Message: "GET error!!!",
 		}
 	}
 	return qn.SuccessResponse{
 		Payload: struct {
 			Message string
 		}{
-			Message: "success",
+			Message: "GET Success",
 		},
 	}
 }

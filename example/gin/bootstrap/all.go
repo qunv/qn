@@ -11,7 +11,8 @@ func All() fx.Option {
 	return fx.Options(
 
 		//init apis
-		Apis(),
+		ProvideApis(),
+		router.ProvideRouterStrategy(),
 		//init gin
 		fx.Provide(gin.New),
 
@@ -20,7 +21,7 @@ func All() fx.Option {
 	)
 }
 
-func Apis() fx.Option {
+func ProvideApis() fx.Option {
 	return fx.Options(
 		ProvideIApi(apis.NewGetSynonymApi),
 		ProvideIApi(apis.NewPutSynonymApi),

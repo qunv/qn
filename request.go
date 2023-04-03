@@ -2,11 +2,13 @@ package qn
 
 import (
 	"github.com/gin-gonic/gin"
+	"io/ioutil"
 )
 
 type Request interface {
 	//TODO: init some thing here
 	GetContext() *gin.Context
+	GetBody() ([]byte, error)
 }
 
 type DefaultRequest struct {
@@ -21,4 +23,9 @@ func NewDefaultRequest(ctx *gin.Context) Request {
 
 func (d DefaultRequest) GetContext() *gin.Context {
 	return d.ctx
+}
+
+func (d DefaultRequest) GetBody() ([]byte, error) {
+	body := d.ctx.Request.Body
+	return ioutil.ReadAll(body)
 }

@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/qunv/qn/protocol"
 	"github.com/qunv/qn/protocol/eb"
-	http2 "github.com/qunv/qn/protocol/http"
+	"github.com/qunv/qn/protocol/http"
 	"github.com/qunv/qn/protocol/ws"
 )
 
@@ -49,28 +49,28 @@ func Register(fns ..._withRegFunc) Registry {
 // HTTP_GET is a builder function that apply HTTP protocol and method GET
 func HTTP_GET(endpoint string) regBuilder {
 	return &reg{
-		method:   http2.GET,
+		method:   http.GET,
 		endpoint: endpoint,
 	}
 }
 
 func HTTP_POST(endpoint string) regBuilder {
 	return &reg{
-		method:   http2.POST,
+		method:   http.POST,
 		endpoint: endpoint,
 	}
 }
 
 func HTTP_PUT(endpoint string) regBuilder {
 	return &reg{
-		method:   http2.PUT,
+		method:   http.PUT,
 		endpoint: endpoint,
 	}
 }
 
 func HTTP_DELETE(endpoint string) regBuilder {
 	return &reg{
-		method:   http2.DELETE,
+		method:   http.DELETE,
 		endpoint: endpoint,
 	}
 }
