@@ -2,7 +2,7 @@ package bootstrap
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/qunv/qn/example/gin/controllers"
+	"github.com/qunv/qn/example/gin/apis"
 	"github.com/qunv/qn/example/gin/router"
 	"go.uber.org/fx"
 )
@@ -10,7 +10,7 @@ import (
 func All() fx.Option {
 	return fx.Options(
 
-		//init controllers
+		//init apis
 		Apis(),
 		//init gin
 		fx.Provide(gin.New),
@@ -22,7 +22,8 @@ func All() fx.Option {
 
 func Apis() fx.Option {
 	return fx.Options(
-		ProvideIApi(controllers.NewGetSynonymApi),
+		ProvideIApi(apis.NewGetSynonymApi),
+		ProvideIApi(apis.NewPutSynonymApi),
 	)
 }
 

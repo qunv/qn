@@ -1,6 +1,7 @@
 package qn
 
 import (
+	"github.com/qunv/qn/protocol"
 	"github.com/stretchr/testify/assert"
 	"reflect"
 	"testing"
@@ -10,7 +11,7 @@ type ModStruct struct {
 	reg
 }
 
-func (m *ModStruct) Lookup(p ProtocolType) Registry {
+func (m *ModStruct) Lookup(p protocol.ProtocolType) Registry {
 	//TODO implement me
 	panic("implement me")
 }

@@ -1,4 +1,4 @@
-package controllers
+package apis
 
 import (
 	"fmt"
@@ -10,11 +10,10 @@ type GetSynonymApi struct {
 }
 
 func NewGetSynonymApi() qn.Api {
-	//http := qn.Register(qn.WithMethod(qn.HttpGet), qn.WithEndpoint("/v1/:id"))
-	ws := qn.Register(qn.WithMethod(qn.WS), qn.WithEndpoint("/v1/:id"))
-	htp := qn.HTTP_GET("/v1/:id").Tags("private", "public").New()
+	ws := qn.WS("/ws/v1/:id").New()
+	http := qn.HTTP_GET("/v1/:id").Tags("private", "public").New()
 	return &GetSynonymApi{
-		Regs: qn.Registers(htp, ws),
+		Regs: qn.Registers(http, ws),
 	}
 }
 

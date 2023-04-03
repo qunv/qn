@@ -5,6 +5,7 @@ import (
 )
 
 type Request interface {
+	//TODO: init some thing here
 	GetContext() *gin.Context
 }
 

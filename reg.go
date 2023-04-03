@@ -3,14 +3,15 @@ package qn
 import (
 	"container/list"
 	"github.com/gin-gonic/gin"
+	"github.com/qunv/qn/protocol"
 	"reflect"
 )
 
 type Regs struct {
-	regs map[ProtocolType]Registry
+	regs map[protocol.ProtocolType]Registry
 }
 
-func (r Regs) Lookup(m ProtocolType) Registry {
+func (r Regs) Lookup(m protocol.ProtocolType) Registry {
 	if v, ok := r.regs[m]; ok {
 		return v
 	}
@@ -18,7 +19,7 @@ func (r Regs) Lookup(m ProtocolType) Registry {
 }
 
 func Registers(regs ...Registry) Regs {
-	rs := make(map[ProtocolType]Registry)
+	rs := make(map[protocol.ProtocolType]Registry)
 	for _, v := range regs {
 		rs[v.GetMethod().GetProtocolType()] = v
 	}
@@ -29,7 +30,7 @@ func Registers(regs ...Registry) Regs {
 
 type reg struct {
 	endpoint    string
-	method      Method
+	method      protocol.Method
 	tags        []string
 	middlewares []gin.HandlerFunc
 }
@@ -50,43 +51,11 @@ func (r *reg) New() Registry {
 
 type _withRegFunc func(reg *reg)
 
-func WithEndpoint(endpoint string) _withRegFunc {
-	return func(reg *reg) {
-		reg.endpoint = endpoint
-	}
-}
-
-func WithMethod(method Method) _withRegFunc {
-	return func(reg *reg) {
-		reg.method = method
-	}
-}
-
-func WithTags(tags ...string) _withRegFunc {
-	return func(reg *reg) {
-		reg.tags = tags
-	}
-}
-
-func WithMiddleWare(middlewares ...gin.HandlerFunc) _withRegFunc {
-	return func(reg *reg) {
-		reg.middlewares = middlewares
-	}
-}
-
-func Register(fns ..._withRegFunc) Registry {
-	reg := new(reg)
-	for _, with := range fns {
-		with(reg)
-	}
-	return reg
-}
-
 func (r *reg) GetEndpoint() string {
 	return r.endpoint
 }
 
-func (r *reg) GetMethod() Method {
+func (r *reg) GetMethod() protocol.Method {
 	return r.method
 }
 

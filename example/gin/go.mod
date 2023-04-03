@@ -6,6 +6,8 @@ replace github.com/qunv/qn => ../..
 
 require (
 	github.com/gin-gonic/gin v1.9.0
+	github.com/google/uuid v1.3.0
+	github.com/gorilla/websocket v1.5.0
 	github.com/qunv/qn v0.0.0-00010101000000-000000000000
 	go.uber.org/fx v1.19.2
 )

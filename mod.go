@@ -14,7 +14,7 @@ func Init() {
 func NewApi(fn func() (interface{}, reflect.Type)) {
 	constructor, rt := fn()
 	if !isApiConstructor(constructor) {
-		panic("Is not an api constructor!")
+		panic("Is not an apis constructor!")
 	}
 
 	if !isReg(rt) {

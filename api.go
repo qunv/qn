@@ -1,13 +1,15 @@
 package qn
 
+import "github.com/qunv/qn/protocol"
+
 type Registry interface {
 	GetEndpoint() string
-	GetMethod() Method
+	GetMethod() protocol.Method
 	GetTags() []string
 }
 
 type Foundation interface {
-	Lookup(p ProtocolType) Registry
+	Lookup(p protocol.ProtocolType) Registry
 }
 
 type Api interface {
