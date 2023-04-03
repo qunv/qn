@@ -71,7 +71,7 @@ type RegisterRouterIn struct {
 func RegisterGinRouters(p RegisterRouterIn) {
     group := p.Engine.Group("/")
     for _, api := range p.Apis {
-		for _, strategy := range p.RouterStrategy {
+	for _, strategy := range p.RouterStrategy {
             strategy.Handle(group, api)
         }
     }
