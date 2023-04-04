@@ -139,10 +139,10 @@ import "github.com/qunv/qn"
 
 ## Roadmap
 - [X] HTTP, WS
+- [ ] graphql, grpc, eventbus
 - [ ] Handle tags
 - [ ] Check duplicate protocol method 
 - [ ] New http method
-- [ ] Event bus handle
 - [ ] Refactor 
 - [ ] Testing
 - 
